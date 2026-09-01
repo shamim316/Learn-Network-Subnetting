@@ -5,7 +5,7 @@ new graduates. Addresses are rendered as 3D objects you can pull apart bit by bi
 octet, so the network/host boundary is something you watch move rather than something you
 memorise.
 
-**Live site:** https://shamim316.github.io/Learn-Network-Subnetting/
+**Live site:** https://subnetting.akhtar.app/
 
 ## What is in it
 
@@ -38,7 +38,7 @@ summarizer. All calculation happens in the browser; nothing is sent anywhere.
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173/Learn-Network-Subnetting/
+npm run dev        # http://localhost:5173/
 npm run build      # typecheck + production build into dist/
 npm run preview    # serve the production build
 ```
@@ -51,8 +51,9 @@ Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and
 `dist/` to GitHub Pages. Enable it once under **Settings → Pages → Source → GitHub Actions**.
 
 The site is served from a repository subpath, so `vite.config.ts` sets
-`base: '/Learn-Network-Subnetting/'`. For a custom domain or root-level hosting, build with
-`BASE_PATH=/ npm run build`. Routing uses `HashRouter` so deep links survive a page refresh
+`base: '/'`, matching the custom domain in `public/CNAME`, which serves the site from the root.
+To build for the bare `github.io/<repo>/` URL instead, use
+`BASE_PATH=/Learn-Network-Subnetting/ npm run build`. Routing uses `HashRouter` so deep links survive a page refresh
 without any server-side rewrite.
 
 ## Stack
