@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/* Dark mode is driven by a class on <html>, set before first paint. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --c-bg: #f7f8fa;
+  --c-surface: #ffffff;
+  --c-surface-2: #f1f3f7;
+  --c-border: #dfe3ea;
+  --c-border-strong: #c6ccd8;
+  --c-ink: #10151f;
+  --c-ink-2: #414b5c;
+  --c-ink-3: #6b7688;
+
+  /* Semantic roles used by both the DOM and the 3D scenes. */
+  --c-network: #2563eb; /* network / prefix bits */
+  --c-subnet: #0d9488;  /* borrowed subnet bits  */
+  --c-host: #d97706;    /* host / interface bits */
+  --c-accent: #7c3aed;  /* IPv6 + highlights     */
+  --c-danger: #dc2626;
+  --c-ok: #16a34a;
+  --c-grid: #e3e7ee;
+}
+
+.dark {
+  --c-bg: #0b0f16;
+  --c-surface: #121822;
+  --c-surface-2: #1a2230;
+  --c-border: #26303f;
+  --c-border-strong: #38455a;
+  --c-ink: #eef2f8;
+  --c-ink-2: #b3bece;
+  --c-ink-3: #7f8b9d;
+
+  --c-network: #60a5fa;
+  --c-subnet: #2dd4bf;
+  --c-host: #fbbf24;
+  --c-accent: #a78bfa;
+  --c-danger: #f87171;
+  --c-ok: #4ade80;
+  --c-grid: #1e2734;
+}
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-line: var(--c-border);
+  --color-line-strong: var(--c-border-strong);
+  --color-ink: var(--c-ink);
+  --color-ink-2: var(--c-ink-2);
+  --color-ink-3: var(--c-ink-3);
+  --color-network: var(--c-network);
+  --color-subnet: var(--c-subnet);
+  --color-host: var(--c-host);
+  --color-accent: var(--c-accent);
+  --color-danger: var(--c-danger);
+  --color-ok: var(--c-ok);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Long binary strings should never blow out the layout. */
+.bits {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+  letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--c-network) 30%, transparent);
+}
+
+input[type="range"] {
+  accent-color: var(--c-network);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--c-network);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* drei's <Html> labels sit inside the canvas; keep them click-through by default. */
+.scene-label {
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}

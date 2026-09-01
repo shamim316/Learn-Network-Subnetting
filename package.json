@@ -1,0 +1,35 @@
+{
+  "name": "learn-network-subnetting",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "An interactive 3D course on IPv4 and IPv6 subnetting for network engineers.",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "esbuild tests/lib-checks.ts --bundle --format=esm --platform=node --outfile=node_modules/.cache/lib-checks.mjs --log-level=warning && node node_modules/.cache/lib-checks.mjs"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.7.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.3",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.4.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "@types/three": "^0.185.4",
+    "@vitejs/plugin-react": "^6.1.1",
+    "esbuild": "^0.28.2",
+    "playwright": "^1.62.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2"
+  }
+}
